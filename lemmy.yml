@@ -254,10 +254,3 @@
         state: present
         pull: true
         remove_orphans: true
-
-    - name: Certbot renewal cronjob
-      ansible.builtin.cron:
-        special_time: daily
-        name: certbot-renew-lemmy
-        user: root
-        job: "certbot certonly --nginx --cert-name '{{ domain }}' -d '{{ domain }}' --deploy-hook 'nginx -s reload'"
